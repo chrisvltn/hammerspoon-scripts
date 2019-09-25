@@ -2,9 +2,11 @@
 
 ## Installing Hammerspoon
 
-To install Hammerspoon, you can run the following command:
+To install Hammerspoon, you can run the following command in your terminal:
 
-    $ brew cask install hammerspoon
+```bash
+brew cask install hammerspoon
+```
 
 Or you can also download it in [this link](https://github.com/Hammerspoon/hammerspoon/releases/latest)
 
@@ -12,8 +14,10 @@ Or you can also download it in [this link](https://github.com/Hammerspoon/hammer
 
 In order to work properly, the repository files should be directly inside the Hammerspoon folder (default: `~/.hammerspoon`):
 
-    $ rm -rf ~/.hammerspoon
-    $ git clone https://github.com/chrisvltn/hammerspoon-scripts.git ~/.hammerspoon
+```bash
+rm -rf ~/.hammerspoon
+git clone https://github.com/chrisvltn/hammerspoon-scripts.git ~/.hammerspoon
+```
 
 > Note that it will replace all your scripts. In case you want to keep them, clone the repository somewhere else and copy the scripts to your Hammerspoon folder.
 
