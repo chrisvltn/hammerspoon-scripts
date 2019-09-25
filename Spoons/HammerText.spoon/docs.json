@@ -1,0 +1,162 @@
+[
+  {
+    "Constant" : [
+
+    ],
+    "submodules" : [
+
+    ],
+    "Function" : [
+
+    ],
+    "Variable" : [
+      {
+        "doc" : "Logger object used within the Spoon. Can be accessed to set the default log level for the messages coming from the Spoon.",
+        "stripped_doc" : [
+          "Logger object used within the Spoon. Can be accessed to set the default log level for the messages coming from the Spoon."
+        ],
+        "parameters" : [
+
+        ],
+        "name" : "logger",
+        "notes" : [
+
+        ],
+        "signature" : "HammerText.logger",
+        "type" : "Variable",
+        "returns" : [
+
+        ],
+        "def" : "HammerText.logger",
+        "desc" : "Logger object used within the Spoon. Can be accessed to set the default log level for the messages coming from the Spoon."
+      },
+      {
+        "doc" : "Map of keywords to strings or functions that return a string\nto be replaced.",
+        "stripped_doc" : [
+          "Map of keywords to strings or functions that return a string",
+          "to be replaced."
+        ],
+        "parameters" : [
+
+        ],
+        "name" : "keywords",
+        "notes" : [
+
+        ],
+        "signature" : "HammerText.keywords",
+        "type" : "Variable",
+        "returns" : [
+
+        ],
+        "def" : "HammerText.keywords",
+        "desc" : "Map of keywords to strings or functions that return a string"
+      }
+    ],
+    "stripped_doc" : [
+
+    ],
+    "Deprecated" : [
+
+    ],
+    "type" : "Module",
+    "desc" : "",
+    "Constructor" : [
+
+    ],
+    "doc" : "Based on: https:\/\/github.com\/Hammerspoon\/hammerspoon\/issues\/1042\n\nHow to \"install\":\n- Simply copy and paste this code in your \"init.lua\".\n\nHow to use:\n\t- Add this init.lua to ~\/.hammerspoon\/Spoons\/HammerText.spoon\n\t- Add your hotstrings (abbreviations that get expanded) to the \"keywords\" list following the example format.\n\t\n\tht = hs.loadSpoon(\"HammerText\")\n\tht.keywords ={\n\t\t\tnname = \"Max Rydahl Andersen\",\n\t\t\txdate = function() return os.date(\"%B %d, %Y\") end,\n\t}\n\tht:start()\n\n\n\nFeatures:\n- Text expansion starts automatically in your init.lua config.\n- Hotstring expands immediately.\n- Word buffer is cleared after pressing one of the \"navigational\" keys.\n\tPS: The default keys should give a good enough workflow so I didn't bother including other keys.\n\t\t\tIf you'd like to clear the buffer with more keys simply add them to the \"navigational keys\" conditional.\n\nLimitations:\n- Can't expand hotstring if it's immediately typed after an expansion. Meaning that typing \"..name..name\" will result in \"My name..name\".\n\tThis is intentional since the hotstring could be a part of the expanded string and this could cause a loop.\n\tIn that case you have to type one of the \"buffer-clearing\" keys that are included in the \"navigational keys\" conditional (which is very often the case).",
+    "Method" : [
+      {
+        "doc" : "Start HammerText\n\nParameters:\n * None",
+        "stripped_doc" : [
+          "Start HammerText",
+          ""
+        ],
+        "parameters" : [
+          " * None"
+        ],
+        "name" : "start",
+        "notes" : [
+
+        ],
+        "signature" : "HammerText:start()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "def" : "HammerText:start()",
+        "desc" : "Start HammerText"
+      }
+    ],
+    "Command" : [
+
+    ],
+    "Field" : [
+
+    ],
+    "items" : [
+      {
+        "doc" : "Map of keywords to strings or functions that return a string\nto be replaced.",
+        "stripped_doc" : [
+          "Map of keywords to strings or functions that return a string",
+          "to be replaced."
+        ],
+        "parameters" : [
+
+        ],
+        "name" : "keywords",
+        "notes" : [
+
+        ],
+        "signature" : "HammerText.keywords",
+        "type" : "Variable",
+        "returns" : [
+
+        ],
+        "def" : "HammerText.keywords",
+        "desc" : "Map of keywords to strings or functions that return a string"
+      },
+      {
+        "doc" : "Logger object used within the Spoon. Can be accessed to set the default log level for the messages coming from the Spoon.",
+        "stripped_doc" : [
+          "Logger object used within the Spoon. Can be accessed to set the default log level for the messages coming from the Spoon."
+        ],
+        "parameters" : [
+
+        ],
+        "name" : "logger",
+        "notes" : [
+
+        ],
+        "signature" : "HammerText.logger",
+        "type" : "Variable",
+        "returns" : [
+
+        ],
+        "def" : "HammerText.logger",
+        "desc" : "Logger object used within the Spoon. Can be accessed to set the default log level for the messages coming from the Spoon."
+      },
+      {
+        "doc" : "Start HammerText\n\nParameters:\n * None",
+        "stripped_doc" : [
+          "Start HammerText",
+          ""
+        ],
+        "parameters" : [
+          " * None"
+        ],
+        "name" : "start",
+        "notes" : [
+
+        ],
+        "signature" : "HammerText:start()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "def" : "HammerText:start()",
+        "desc" : "Start HammerText"
+      }
+    ],
+    "name" : "HammerText"
+  }
+]

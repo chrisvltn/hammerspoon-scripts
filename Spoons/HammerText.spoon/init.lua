@@ -1,37 +1,34 @@
 
---[[ 
-		=== HammerText ===
-		Based on: https://github.com/Hammerspoon/hammerspoon/issues/1042
-
-		How to "install":
-		- Simply copy and paste this code in your "init.lua".
-
-		How to use:
-			- Add this init.lua to ~/.hammerspoon/Spoons/HammerText.spoon
-			- Add your hotstrings (abbreviations that get expanded) to the "keywords" list following the example format.
-			
-			ht = hs.loadSpoon("HammerText")
-			ht.keywords ={
-				 nname = "Max Rydahl Andersen",
-				 xdate = function() return os.date("%B %d, %Y") end,
-			}
-			ht:start()
-
-
-	 
-		Features:
-		- Text expansion starts automatically in your init.lua config.
-		- Hotstring expands immediately.
-		- Word buffer is cleared after pressing one of the "navigational" keys.
-			PS: The default keys should give a good enough workflow so I didn't bother including other keys.
-					If you'd like to clear the buffer with more keys simply add them to the "navigational keys" conditional.
-
-		Limitations:
-		- Can't expand hotstring if it's immediately typed after an expansion. Meaning that typing "..name..name" will result in "My name..name".
-			This is intentional since the hotstring could be a part of the expanded string and this could cause a loop.
-			In that case you have to type one of the "buffer-clearing" keys that are included in the "navigational keys" conditional (which is very often the case).
-
---]]
+--- === HammerText ===
+--- Based on: https://github.com/Hammerspoon/hammerspoon/issues/1042
+--- 
+--- How to "install":
+--- - Simply copy and paste this code in your "init.lua".
+--- 
+--- How to use:
+--- 	- Add this init.lua to ~/.hammerspoon/Spoons/HammerText.spoon
+--- 	- Add your hotstrings (abbreviations that get expanded) to the "keywords" list following the example format.
+--- 	
+--- 	ht = hs.loadSpoon("HammerText")
+--- 	ht.keywords ={
+--- 			nname = "Max Rydahl Andersen",
+--- 			xdate = function() return os.date("%B %d, %Y") end,
+--- 	}
+--- 	ht:start()
+--- 
+--- 
+--- 
+--- Features:
+--- - Text expansion starts automatically in your init.lua config.
+--- - Hotstring expands immediately.
+--- - Word buffer is cleared after pressing one of the "navigational" keys.
+--- 	PS: The default keys should give a good enough workflow so I didn't bother including other keys.
+--- 			If you'd like to clear the buffer with more keys simply add them to the "navigational keys" conditional.
+--- 
+--- Limitations:
+--- - Can't expand hotstring if it's immediately typed after an expansion. Meaning that typing "..name..name" will result in "My name..name".
+--- 	This is intentional since the hotstring could be a part of the expanded string and this could cause a loop.
+--- 	In that case you have to type one of the "buffer-clearing" keys that are included in the "navigational keys" conditional (which is very often the case).
 
 local obj = {}
 obj.__index = obj
@@ -41,10 +38,10 @@ obj.name = "HammerText"
 obj.version = "1.0"
 obj.author = "Multiple Authors"
 
---- Keychain.logger
+--- HammerText.logger
 --- Variable
 --- Logger object used within the Spoon. Can be accessed to set the default log level for the messages coming from the Spoon.
-obj.logger = hs.logger.new('HammerText', 'debug')
+obj.logger = hs.logger.new('HammerText', 'info')
 
 --- HammerText.keywords
 --- Variable
@@ -54,7 +51,6 @@ obj.keywords = {
 	["..name"] = "My name",
 	["..addr"] = "My address",
 }
-
 
 function expander()
 	local word = ""
