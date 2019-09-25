@@ -19,6 +19,8 @@ rm -rf ~/.hammerspoon
 git clone https://github.com/chrisvltn/hammerspoon-scripts.git ~/.hammerspoon
 ```
 
+After that, restart Hammerspoon and then all the scripts should be working fine :)
+
 > Note that it will replace all your scripts. In case you want to keep them, clone the repository somewhere else and copy the scripts to your Hammerspoon folder.
 
 ## Adding more scripts
