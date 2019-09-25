@@ -1,3 +1,5 @@
+local logger = hs.logger.new('Requirer', 'info')
+
 function requireRecursive(path)
     local iterFn, dirObj = hs.fs.dir(path)
 
@@ -8,7 +10,11 @@ function requireRecursive(path)
                 requireRecursive(filePath)
 
                 if filePath:sub(-4) == ".lua" then
-                    require(filePath:sub(0, -5))
+                    if pcall(function() require(filePath:sub(0, -5)) end) then
+                        logger.df("File '%s' was required successfully", file)
+                    else
+                        logger.df("Error requiring the file '%s'", file)
+                    end
                 end
             end
         end
