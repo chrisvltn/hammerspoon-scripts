@@ -11,6 +11,7 @@ local appHotkeys = {
   { "v", 'Visual Studio Code' },
   { "d", 'Microsoft Outlook' },
   { "e", 'Finder' },
+  { "l", function() hs.caffeinate.startScreensaver() end },
 }
 
 local logger = hs.logger.new('AppHotkeys', 'debug')
@@ -19,9 +20,13 @@ for i, hotkey in ipairs(appHotkeys) do
     local key = hotkey[1]
     local applicationName = hotkey[2]
 
-    hyper:bind({}, key, function()
-        hs.application.open(applicationName)
-    end)
+    if type(applicationName) == "function" then
+        hyper:bind({}, key, applicationName)
+    else
+        hyper:bind({}, key, function()
+            hs.application.open(applicationName)
+        end)
+    end
 end
 
 -- Enter Hyper Mode when Hyper/Capslock is pressed
