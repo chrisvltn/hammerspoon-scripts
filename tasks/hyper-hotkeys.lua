@@ -15,7 +15,34 @@ local appHotkeys = {
 }
 
 local logger = hs.logger.new('AppHotkeys', 'debug')
-logger.d('Working')
+
+--- Gets the front-most open app
+-- @return `hs.application` or `nil` if no app is a front-most one
+function getFocusedApp()
+    local apps = hs.application.runningApplications()
+    local frontMostApp = nil
+
+    for key, app in pairs(apps) do
+        if app.isFrontmost(app) then
+            frontMostApp = app
+        end
+    end
+
+    return frontMostApp
+end
+
+--- Generates a table with the values in the place of the keys
+-- @param {table} Table to retrieve the indexes
+-- @return A table
+function getTableIndexes(table)
+    local tableIndexes = {}
+
+    for k, v in pairs(table) do
+        tableIndexes[v] = k
+    end
+    
+    return tableIndexes
+end
 
 for i, hotkey in ipairs(appHotkeys) do
     local key = hotkey[1]
@@ -24,23 +51,13 @@ for i, hotkey in ipairs(appHotkeys) do
     if type(applicationName) == "function" then
         hyper:bind({}, key, applicationName)
     elseif type(applicationName) == "table" then
-        local appNameIndexes = {}
-        for k, v in pairs(applicationName) do
-            appNameIndexes[v] = k
-        end
+        local appNameIndexes = getTableIndexes(applicationName)
         
         hyper:bind({}, key, function()
-            local apps = hs.application.runningApplications()
-            local frontMostApp
+            local focusedApp = getFocusedApp()
 
-            for key, app in pairs(apps) do
-                if app.isFrontmost(app) then
-                    frontMostApp = app
-                end
-            end
-
-            if frontMostApp ~= nil then
-                local title = frontMostApp.title(frontMostApp)
+            if focusedApp ~= nil then
+                local title = focusedApp.title(focusedApp)
                 local index = appNameIndexes[title]
 
                 if index == nil or applicationName[index + 1] == nil then
