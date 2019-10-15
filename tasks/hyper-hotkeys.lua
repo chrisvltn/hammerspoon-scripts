@@ -11,25 +11,18 @@ local appHotkeys = {
   { "v", 'Visual Studio Code' },
   { "d", 'Microsoft Outlook' },
   { "e", 'Finder' },
+  { "w", function() 
+            -- Checks if Whatsapp app exists. If it doesn't, add a hotkey to open Whatsapp Web
+            local whatsappExists = hs.application.launchOrFocus('Whatsapp')
+            if not whatsappExists then
+                hs.urlevent.openURL('https://web.whatsapp.com')
+            end
+        end },
   { "l", function() hs.caffeinate.startScreensaver() end },
 }
 
 local logger = hs.logger.new('AppHotkeys', 'debug')
 
---- Gets the front-most open app
--- @return `hs.application` or `nil` if no app is a front-most one
-function getFocusedApp()
-    local apps = hs.application.runningApplications()
-    local frontMostApp = nil
-
-    for key, app in pairs(apps) do
-        if app.isFrontmost(app) then
-            frontMostApp = app
-        end
-    end
-
-    return frontMostApp
-end
 
 --- Generates a table with the values in the place of the keys
 -- @param {table} Table to retrieve the indexes
