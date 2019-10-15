@@ -54,7 +54,7 @@ for i, hotkey in ipairs(appHotkeys) do
         local appNameIndexes = getTableIndexes(applicationName)
         
         hyper:bind({}, key, function()
-            local focusedApp = getFocusedApp()
+            local focusedApp = hs.application.frontmostApplication()
 
             if focusedApp ~= nil then
                 local title = focusedApp.title(focusedApp)
