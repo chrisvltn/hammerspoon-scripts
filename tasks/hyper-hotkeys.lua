@@ -19,6 +19,7 @@ local appHotkeys = {
             end
         end },
   { "l", function() hs.caffeinate.startScreensaver() end },
+  { "r", function() hs.reload() end },
 }
 
 local logger = hs.logger.new('AppHotkeys', 'debug')
