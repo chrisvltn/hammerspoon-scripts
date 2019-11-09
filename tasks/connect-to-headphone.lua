@@ -11,6 +11,7 @@ local BLUETOOTH_DEVICE_NAME = "Bozo"
 
 -- Cmd + Alt + Ctrl + B to reload connect to the headphone
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "B", function()
+    hs.alert.show("Connecting to " .. BLUETOOTH_DEVICE_NAME .. "...")
     local output, isOK = hs.execute('blueutil --recent --format json-pretty', true)
     local devices = hs.json.decode(output)
 
@@ -23,8 +24,11 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "B", function()
     end
     
     if selectedDevice ~= nil and not selectedDevice.connected then
-        hs.alert.show("Connecting to " .. BLUETOOTH_DEVICE_NAME .. "...")
         hs.execute('blueutil --connect ' .. selectedDevice.address, true)
         hs.alert.show(BLUETOOTH_DEVICE_NAME .. " connected")
+    end
+
+    if selectedDevice == nil then
+        hs.alert.show(BLUETOOTH_DEVICE_NAME .. " not found")
     end
 end)
