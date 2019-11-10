@@ -11,6 +11,7 @@ local appHotkeys = {
   { "v", 'Visual Studio Code' },
   { "d", 'Microsoft Outlook' },
   { "e", 'Finder' },
+  { "b", 'Bouncer Todo List' },
   { "w", function() 
             -- Checks if Whatsapp app exists. If it doesn't, add a hotkey to open Whatsapp Web
             local whatsappExists = hs.application.launchOrFocus('Whatsapp')
