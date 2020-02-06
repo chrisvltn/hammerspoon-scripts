@@ -16,7 +16,7 @@ end)
 
 function recurrentRestart()
     restartMiddleClick()
-    hs.timer.doAfter(60, recurrentRestart)
+    hs.timer.doAfter(10, recurrentRestart)
 end
 
 recurrentRestart()
