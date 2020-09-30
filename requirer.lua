@@ -7,7 +7,12 @@ function requireRecursive(path)
         for file in iterFn, dirObj do
             if file ~= "." and file ~= ".." then
                 local filePath = path .. '/' .. file
-                requireRecursive(filePath)
+
+                local fileType = hs.fs.attributes(filePath, 'mode')
+                logger.df('file path: [%s] %s', fileType, filePath)
+                if fileType == 'directory' then
+                    requireRecursive(filePath)
+                end
 
                 if filePath:sub(-4) == ".lua" then
                     if pcall(function() require(filePath:sub(0, -5)) end) then
