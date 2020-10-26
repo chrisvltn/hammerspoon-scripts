@@ -162,8 +162,8 @@ function expander()
 		return false -- pass the event on to the application
 	end):start() -- start the eventtap
 
-	-- return keyWatcher to assign this functionality to the "expander" variable to prevent garbage collection
-	return keyWatcher
+	-- return watcher to assign this functionality to the "expander" variable to prevent garbage collection
+	return HammerText.watchers[HammerText.watchersIndex].listener
 end
 
 --- HammerText:start()
