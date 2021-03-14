@@ -5,7 +5,13 @@ local HYPER_KEY = 'F17' -- F17 is remapped to Caps Lock with Karabiner-Elements
 local hyper = hs.hotkey.modal.new()
 
 local appHotkeys = {
-  { "c", 'Google Chrome' },
+  { "c", function() 
+            -- Checks if Brave app exists. If it doesn't, opens Chrome
+            local braveExists = hs.application.launchOrFocus('Brave Browser')
+            if not braveExists then
+                hs.application.launchOrFocus('Chrome')
+            end
+        end },
   { "t", 'iTerm' },
   { "s", {'Slack', 'Spotify'} },
   { "v", 'Visual Studio Code' },
