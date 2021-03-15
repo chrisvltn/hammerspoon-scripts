@@ -9,7 +9,7 @@ local appHotkeys = {
             -- Checks if Brave app exists. If it doesn't, opens Chrome
             local braveExists = hs.application.launchOrFocus('Brave Browser')
             if not braveExists then
-                hs.application.launchOrFocus('Chrome')
+                hs.application.launchOrFocus('Google Chrome')
             end
         end },
   { "t", 'iTerm' },
