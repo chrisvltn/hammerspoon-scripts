@@ -5,7 +5,9 @@ function restartMiddleClick()
         app.kill9(app)
     end
 
-    hs.application.open('MiddleClick')
+    hs.timer.delayed.new(0.5, function()
+        hs.application.open('MiddleClick')
+    end):start()
 end
 
 -- Cmd + Alt + Ctrl + M to reload MiddleClick app
