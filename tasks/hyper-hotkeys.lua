@@ -55,24 +55,23 @@ for i, hotkey in ipairs(appHotkeys) do
         local appNameIndexes = getTableIndexes(applicationName)
         
         hyper:bind({}, key, function()
-            local focusedApp = hs.application.frontmostApplication()
+            local app1 = hs.application.find(applicationName[1]:lower())
+            local app2 = hs.application.find(applicationName[2]:lower())
+            local appToOpen = nil
 
-            if focusedApp ~= nil then
-                local title = focusedApp.title(focusedApp)
-                local index = appNameIndexes[title]
-
-                if index == nil or applicationName[index + 1] == nil then
-                    logger.df("Opening %s", applicationName[1])
-                    hs.application.open(applicationName[1])
-                else
-                    logger.df("Opening %s", applicationName[index + 1])
-                    hs.application.open(applicationName[index + 1])
-                end
+            if (app1 ~= nil and not app1:isFrontmost()) or app2:isFrontmost() then
+                appToOpen = applicationName[1]
+            else
+                appToOpen = applicationName[2]
             end
+            
+            logger.df("Opening %s", appToOpen)
+            hs.application.launchOrFocus(appToOpen)
         end)
     else
         hyper:bind({}, key, function()
-            hs.application.open(applicationName)
+            logger.df("Opening %s", applicationName)
+            hs.application.launchOrFocus(applicationName)
         end)
     end
 end
