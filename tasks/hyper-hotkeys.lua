@@ -59,7 +59,7 @@ for i, hotkey in ipairs(appHotkeys) do
             local app2 = hs.application.find(applicationName[2]:lower())
             local appToOpen = nil
 
-            if (app1 ~= nil and not app1:isFrontmost()) or app2:isFrontmost() then
+            if (app1 ~= nil and not app1:isFrontmost()) or (app1 == nil and app2 == nil) or (app2 ~= nil and app2:isFrontmost()) then
                 appToOpen = applicationName[1]
             else
                 appToOpen = applicationName[2]
