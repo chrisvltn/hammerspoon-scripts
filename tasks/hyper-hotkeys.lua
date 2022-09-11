@@ -12,7 +12,7 @@ local appHotkeys = {
                 hs.application.launchOrFocus('Google Chrome')
             end
         end },
-  { "t", 'iTerm' },
+  { "t", {'iTerm', 'Todoist'} },
   { "s", {'Slack', 'Spotify'} },
   { "v", 'Visual Studio Code' },
   { "d", 'Microsoft Outlook' },
